@@ -81,12 +81,11 @@ app.post('/api/viewSavedGraphs', async (req, res) => {
     withDB(async (db) => {        
         const savedGraphs = await db.collection('EasyGraph').findOne({ userToken: userToken });      
         var formattedGraphs = null;
-        console.log("right before if block");
+        
         if (savedGraphs !== null) {
             formattedGraphs = savedGraphs.graphOptions;
-            console.log("right after assignment");
+           
         }
-        console.log(formattedGraphs);
         res.status(200).json(formattedGraphs);
     }, res);
 });
